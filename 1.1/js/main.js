@@ -1,0 +1,21 @@
+let f = +prompt ('Введите значение F', ' ');
+let m = +prompt ('Введите значение m', ' ');
+let a = f / m;
+
+document.write('**************');
+document.write('<br>');
+document.write('Ускорение тела при силе F = '); 
+document.write(f);
+document.write(',');
+document.write(' и массе m = ');
+document.write(m);
+document.write(' :');
+document.write('<br>');
+document.write('--------------------');
+document.write('<br>');
+document.write('a = ');
+document.write(a);
+document.write('<br>');
+document.write('--------------------');
+document.write('<br>');
+document.write('end.');
