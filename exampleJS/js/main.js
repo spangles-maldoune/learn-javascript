@@ -1,11 +1,12 @@
 
 let num = prompt (' ');
+let result;
 switch (num) { 	 		//название переменной
 	case '1': 						//первое условие при значении 1
 		result = ('Зима'); //если все переменные result написать с ключевым словом let, то не работает
 	break;
 	case '2':
-		result = ('Весна'); 
+		result = ('Весна');
 	break;
 	case '3':
 		result = ('Лето');
@@ -13,5 +14,5 @@ switch (num) { 	 		//название переменной
 	case '4':
 		result = ('Осень');
 	break;
-};
+}
 alert (result);
