@@ -1,17 +1,41 @@
-'use strict'
 
-let max = 100, min = -100;
-let newArr = [];
-let result = 0;
-newArr.length = 10;
 
-for (let i = 0, size = newArr.length - 1; i <= size; i++) {
-	newArr[i] = Math.floor (Math.random() * (max - min) + min);
-	if (newArr[i] > 0) {
-		result += newArr[i];
-	}
-};
+//Заполнить массив А случайными числами (диазпазон на ваше усмотрение). 
+//Заменить каждый элемент массива с нечетным индексом на ноль.
 
-console.log(newArr);
+// let max = 100, min = 0;
+// let size = 10;
+// let newArr = [];
 
-console.log(result);
+// for (let i = 0; i <= size - 1; i++) {
+// 	newArr[i] = Math.floor (Math.random() * (max - min) + min);
+// 	if (i % 2 != 0) {
+// 		newArr[i] = (0);
+// 	}
+// };
+
+// console.log(newArr);
+
+
+//Заполнить массив размерностью n значениями с клавиатуры. 
+//Если введенное значение пользователя не число, или отрицательное значение, 
+//то запросить повторный ввод данных.
+
+let newArr2;
+// let n = 5;
+
+// for (let i = 0; i < n; i++) {
+// 	newArr2[] = +prompt ('Введите число:', ' ');
+// 	if (+newArr2[] < 0){
+// 		+prompt ('Это не число, введите число еще раз:', ' ');
+// 	}
+// }
+
+do {
+	newArr2 = +prompt ('Введите число:', ' ');
+} while (newArr2 !== NaN);
+
+
+console.log(newArr2);
+
+
