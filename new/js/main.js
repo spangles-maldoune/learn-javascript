@@ -1,36 +1,20 @@
-// Создать двумерный массив, заполненный случайными числами в любом диапазоне.
-// Найти колонку, где сумма элементов наименьшая.
-// Найти колонку, где сумма элементов найбольшая.
+// задача называется, найти пропущенный диапазон:
+// пример, вот на входи массив и два числа
+// Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
+// 	вот какой должен быть вывод
+// Output: ["2", "4->49", "51->74", "76->99"]
 
 
-var arr = [];
 
-for (var i = 0, sizeArr = 5; i < sizeArr; i++) {
-	arr[i] = new Array(sizeArr);
+let input = [0, 1, 3, 50, 75],
+	lower = 0,
+	upper = 99,
+	output = [];
 
-	for (var j = 0, len = arr[i].length; j < len; j++) {
-		arr[i][j] = Math.floor(Math.random() * (100 - 0) + 0);
+for (let i = lower; i <= upper; i++) {
+	if (input.indexOf(i) < 0) {
+		output[output.length] = i;
 	}
 }
 
-console.log(arr, 'Array');
-
-for (var i = 0, sizeArr = 5; i < sizeArr; i++) {
-	for (var j = 0, len = arr[i].length, arrSum = 0; j < len; j++) {
-		arrSum += arr[i][j];
-	}
-	if (i == 0) {
-		var min = arrSum;
-		var max = arrSum;
-	}
-	if (arrSum > max) {
-		max = arrSum;
-	}
-	if (min > arrSum) {
-		min = arrSum;
-	}
-	console.log(arrSum, 'summa');
-}
-
-console.log(min, 'min');
-console.log(max, 'max');
+console.log(output);
