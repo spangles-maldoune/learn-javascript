@@ -16,16 +16,17 @@ let newObj2 = {
 	y: 30
 }
 
-function assignObjects(obj1, obj2) {
+function assignObjects() {
+	var newobj = {};
 
-	for (var i in obj1) {
-		newobj[i] = obj1[i];
+	for (var i = 0; i < arguments.length; i++) {
+		for (var k in arguments[i]) {
+			newobj[k] = arguments[i][k];
+		}
 	}
-	for (var y in obj2) {
-		newobj[y] = obj2[y]
-	}
+
 	return newobj;
 }
 
-assignObjects(newObj1, newObj2);
-console.log(newobj, 'newobj');
+var result = assignObjects(newObj1, newObj2);
+console.log(result);
