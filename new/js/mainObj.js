@@ -1,32 +1,28 @@
-// Написать функцию assignObjects(obj1, obj2), которая принимает аргументами 2 обьекта и возвращает новый, 
-// который состоит из свойство обоих обьектов(склеить).Если свойство повторяется, то взять значение второго обьекта
+// Написать функцию заполнения массива.Имя произвольное.
 
-// assignObjects({ x: 10, y: 20 }, { z: 30 }) -> { x: 10, y: 20, z: 30 }
-
-// assignObjects({ x: 10 }, { x: 20, y: 30 }) - > { x: 20, y: 30 }
-
-let newobj = {};
-
-let newObj1 = {
-	x: 10
-};
-
-let newObj2 = {
-	x: 20,
-	y: 30
-}
-
-function assignObjects() {
-	var newobj = {};
-
-	for (var i = 0; i < arguments.length; i++) {
-		for (var k in arguments[i]) {
-			newobj[k] = arguments[i][k];
-		}
+function arrMake(min, max, size) {
+	var arr = [];
+	for (var i = 0; i < size; i++) {
+		arr[i] = Math.floor(Math.random() * (max - min) + min);
 	}
-
-	return newobj;
+	return arr;
 }
 
-var result = assignObjects(newObj1, newObj2);
-console.log(result);
+var arr1 = arrMake (0, 10, 10);
+var arr2 = arrMake(0, 10, 10);
+console.log (arr1);
+console.log (arr2);
+
+
+// написать функцию, которая примет как аргумент(параметр) два массива и сравнить суммы всех ЧИСЛОВЫХ элементов.
+// Тот массив, сумма которого большая - должен вернутся функцией.
+
+function arrReturn (arr) {
+	var summ = 0;
+	for (var i = 0; i < arr.length; i++) {
+		summ += arr[i]
+	}
+	console.log (summ);
+}
+
+arrReturn(arr1);
