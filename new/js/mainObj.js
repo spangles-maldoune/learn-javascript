@@ -30,17 +30,14 @@ arrReturn(arr1);
 console.log("Task 1")
 
 function sumTwoArray(arr1, arr2) {
-    var longestIndex = arr1.length;
-    if (longestIndex < arr2.length) {
-        longestIndex = arr2.length;
-    }
+    var longestIndex = Math.max(arr1.length, arr2.length);
     var sumArrayOne = 0;
     var sumArrayTwo = 0;
     for (var i = 0; i < longestIndex; i++) {
-        if (+arr1[i]) {
+        if (Number.isFinite(arr1[i])) {
             sumArrayOne += arr1[i]
         }
-        if (+arr2[i]) {
+        if (Number.isFinite(arr2[i])) {
             sumArrayTwo += arr2[i]
         }
     }
@@ -49,9 +46,8 @@ function sumTwoArray(arr1, arr2) {
     } else {
         return arr2
     }
-
 }
 
-var mass = ["test", 2, 3];
+var mass = ["test", 2, 3, 4, true];
 var mass2 = [2, 3, 2];
 sumTwoArray(mass, mass2);
