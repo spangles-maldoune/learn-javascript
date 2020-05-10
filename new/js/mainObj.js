@@ -26,3 +26,27 @@ function arrReturn (arr) {
 }
 
 arrReturn(arr1);
+
+
+
+function arrReturn (arr1, arr2) {
+	var mass = [arr1, arr2];
+	var summ = [0, 0];
+	for (var i = 0; i < mass.length; i++) {
+		for (var j = 0; j < mass[i].length; j++) {
+			if (typeof (mass[i][j]) === 'number') {
+				summ[i] = summ[i] + mass[i][j];
+			} else {
+				continue;
+			}
+
+		}
+
+	}
+	
+	console.log (summ, 'summ');
+}
+
+var mass = [1, 2, 3];
+var mass2 = [2, 3, 2];
+arrReturn(mass, mass2);
