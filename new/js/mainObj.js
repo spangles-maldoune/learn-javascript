@@ -51,3 +51,18 @@ function sumTwoArray(arr1, arr2) {
 var mass = ["test", 2, 3, 4, true];
 var mass2 = [2, 3, 2];
 sumTwoArray(mass, mass2);
+
+function doMath(znak) {
+    let functions = {
+        '+': (x, y) => {return x + y},
+        '-': (x, y) => {return x - y},
+        '*': (x, y) => {return x * y},
+        '/': (x, y) => {return x / y},
+        '%': (x, y) => {return x % y},
+        '^': (x, y) => {return x ** y},
+    }
+   return functions[znak]
+}
+
+var res = doMath ('+')(6,2);
+console.log(res);
