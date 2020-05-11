@@ -53,15 +53,14 @@ var mass2 = [2, 3, 2];
 sumTwoArray(mass, mass2);
 
 function doMath(znak) {
-    let functions = {
-        '+': (x, y) => {return x + y},
-        '-': (x, y) => {return x - y},
-        '*': (x, y) => {return x * y},
-        '/': (x, y) => {return x / y},
-        '%': (x, y) => {return x % y},
-        '^': (x, y) => {return x ** y},
-    }
-   return functions[znak]
+   return {
+       '+': (x, y) => {return x + y},
+       '-': (x, y) => {return x - y},
+       '*': (x, y) => {return x * y},
+       '/': (x, y) => {return x / y},
+       '%': (x, y) => {return x % y},
+       '^': (x, y) => {return x ** y},
+   }[znak]
 }
 
 var res = doMath ('+')(6,2);
