@@ -52,7 +52,7 @@ var mass = ["test", 2, 3, 4, true];
 var mass2 = [2, 3, 2];
 sumTwoArray(mass, mass2);
 
-function doMath(znak) {
+function doMath(x,znak,y) {
     return {
         '+': (x, y) => x + y,
         '-': (x, y) => x - y,
@@ -60,8 +60,8 @@ function doMath(znak) {
         '/': (x, y) => x / y,
         '%': (x, y) => x % y,
         '^': (x, y) => x ** y,
-    }[znak]
+    }[znak](x, y)
 }
 
-var res = doMath('-')(6, 2);
+var res = doMath(6, '-', 2);
 console.log(res);
