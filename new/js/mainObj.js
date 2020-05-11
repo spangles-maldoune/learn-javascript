@@ -65,3 +65,30 @@ function doMath(x,znak,y) {
 
 var res = doMath(6, '-', 2);
 console.log(res);
+
+
+// напиши функцию filter, которая принимает функцию - предикат и массив.
+// Возвращает она массив значений, для которых предикат вернет true.
+// var input = [1, 2, 3, 4, 5, 6];
+// function isEven(x) { return x % 2 == 0; } // проверяет на четность
+// console.log(filter(input, isEven)); // [2, 4, 6]
+
+function filter(input, isEven) {
+	var arr = [];
+	for (var i = 0; i < input.length; i++) {
+		var a = isEven(input[i]);
+		if (a === true) {
+			arr[arr.length] = input[i];
+		} 
+	}
+	return arr;
+}
+
+function isEven(a) {
+	return a % 2 == 0;
+}
+
+var arrInput = [1, 2, 3, 4, 5, 6];
+
+var arrRes = filter(arrInput, isEven);
+console.log(arrRes);
