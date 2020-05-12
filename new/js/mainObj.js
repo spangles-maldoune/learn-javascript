@@ -79,7 +79,7 @@ function filter(input, isEven) {
 		var a = isEven(input[i]);
 		if (a === true) {
 			arr[arr.length] = input[i];
-		} 
+		}
 	}
 	return arr;
 }
@@ -108,11 +108,17 @@ function sumbolDel(text, contArr) {
 	for (var i = 0; i < sumbMass.length; i++) {
 		if (sumbMass[i] !== contArr[0] && sumbMass[i] !== contArr[1]) {
 			tempMass.push(sumbMass[i]);
-		} 
-	} 
+		}
+	}
 	return tempMass.join('');
 }
 
+function arrayIntersection(text, intersect) {
+    return text.split('').filter(value => !intersect.includes(value)).join('')
+}
+
 var res = sumbolDel('hello world', ['o', 'h']);
+var intersection = arrayIntersection('hello world', ['o', 'h']);
 console.log (res);
+console.log (intersection);
 
