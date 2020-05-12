@@ -92,3 +92,27 @@ var arrInput = [1, 2, 3, 4, 5, 6];
 
 var arrRes = filter(arrInput, isEven);
 console.log(arrRes);
+
+
+
+
+
+// Создать функцию, которая убирает из строки все символы, которые мы передали вторым аргументом.
+// 'func("hello world", ['l', 'd'])' вернет нам "heo wor"
+
+
+function sumbolDel(text, contArr) {
+	var sumbMass = text.split('');
+	var tempMass = [];
+	console.log (arguments);
+	for (var i = 0; i < sumbMass.length; i++) {
+		if (sumbMass[i] !== contArr[0] && sumbMass[i] !== contArr[1]) {
+			tempMass.push(sumbMass[i]);
+		} 
+	} 
+	return tempMass.join('');
+}
+
+var res = sumbolDel('hello world', ['o', 'h']);
+console.log (res);
+
