@@ -114,7 +114,14 @@ function sumbolDel(text, contArr) {
 }
 
 function arrayIntersection(text, intersect) {
-    return text.split('').filter(value => !intersect.includes(value)).join('')
+    let splitText = text.split('')
+    let accum = ''
+    for (let symbol in splitText) {
+        if(intersect.indexOf(splitText[symbol]) === -1) {
+            accum = accum.concat(splitText[symbol])
+        }
+    }
+    return accum
 }
 
 var res = sumbolDel('hello world', ['o', 'h']);
