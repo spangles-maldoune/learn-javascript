@@ -10,19 +10,24 @@ function initSlider(size) {
    return {
       up: function () {
          if (count === size) {
-            return console.log(count = 0);
+            count = 0;
+            return count;
          }
-         console.log(++count);
+         ++count;
+         console.log(count);
       },
       down: function () {
          if (count === 0) {
-            return console.log(count = size);
+            count = size;
+            return count;
          }
-         console.log(--count);
+         --count;
+         console.log(count);
       },
       set: function (n) {
          if (n > 0 && n <= size) {
-            console.log(count = n);
+            count = n;
+            console.log.count);
          } else {
             console.log('Error!!!')
          }
