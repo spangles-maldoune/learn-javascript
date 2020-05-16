@@ -27,7 +27,7 @@ function initSlider(size) {
       set: function (n) {
          if (n > 0 && n <= size) {
             count = n;
-            console.log.count);
+            console.log(count);
          } else {
             console.log('Error!!!')
          }
