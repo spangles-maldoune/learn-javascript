@@ -129,3 +129,33 @@ var intersection = arrayIntersection('hello world', ['o', 'h']);
 console.log (res);
 console.log (intersection);
 
+
+
+function arrReturn(arrOne, arrTwo, fn) {
+	var sumOne = 0;
+	var sumTwo = 0;
+	var longIndex = Math.max(arrOne.length, arrTwo.length);
+
+	for (var i = 0; i < longIndex; i++) {
+
+		if (typeof (arrOne[i]) === 'number') {
+			sumOne += arrOne[i];
+		}
+
+		if (typeof (arrTwo[i]) === 'number') {
+			sumTwo += arrTwo[i];
+		}
+   }
+   fn ();
+
+	
+}
+
+
+function comparator(arrOne, arrTwo) {
+   if (sumOne > sumTwo) {
+      return arrOne;
+   } else {
+      return arrTwo;
+   }
+}
