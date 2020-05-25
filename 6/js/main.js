@@ -18,24 +18,35 @@
 // написать функцию, которая примет как аргумент(параметр) два массива и сравнить суммы всех ЧИСЛОВЫХ элементов.
 // Тот массив, сумма которого большая - должен вернутся функцией.
 
-// function arrReturn(arrOne, arrTwo) {
-// 	var sumOne = 0;
-// 	var sumTwo = 0;
-// 	var longIndex = Math.max(arrOne.length, arrTwo.length);
-// 	for (var i = 0; i < longIndex; i++) {
-// 		if (typeof (arrOne[i]) === 'number') {
-// 			sumOne += arrOne[i];
-// 		}
-// 		if (typeof (arrTwo[i]) === 'number') {
-// 			sumTwo += arrTwo[i];
-// 		}
-// 	}
-// 	if (sumOne > sumTwo) {
-// 		return arrOne;
-// 	} else {
-// 		return arrTwo;
-// 	}
-// }
+function arrReturn(arrOne, arrTwo) {
+   var sumOne = 0;
+   var sumTwo = 0;
+   var longIndex = Math.max(arrOne.length, arrTwo.length);
+
+   for (var i = 0; i < longIndex; i++) {
+
+      if (typeof (arrOne[i]) === 'number') {
+         sumOne += arrOne[i];
+      }
+
+      if (typeof (arrTwo[i]) === 'number') {
+         sumTwo += arrTwo[i];
+      }
+   }
+
+   return comparator(sumOne, sumTwo, arrOne, arrTwo);
+
+}
+
+function comparator(sumOne, sumTwo, arrOne, arrTwo) {
+
+   if (sumOne > sumTwo) {
+      return arrOne;
+   } else {
+      return arrTwo;
+   }
+
+}
 
 // var mass = [1, 2, 3, true, 'a', 4];
 // var mass2 = [2, 3, 2, 'g', true, 5];
@@ -47,27 +58,22 @@
 // Написать функцию doMath(x, znak, y), которая получает 3 аргумента: числа x и y, строку znak.
 // В переменной знак может быть: +, -, *, /, %, ^. Вывести результат математического действия, указанного в переменной znak.
 
-// function doMath (x, znak, y) {
-// 	var mathResult;
-// 	if (znak === '+') {
-// 		mathResult = x + y;
-// 	}
-// 	if (znak === '-') {
-// 		mathResult = x - y;
-// 	}
-// 	if (znak === '*') {
-// 		mathResult = x * y;
-// 	}
-// 	if (znak === '/') {
-// 		mathResult = x / y;
-// 	}
-// 	if (znak === '%') {
-// 		mathResult = x % y;
-// 	}
-// 	if (znak === '^') {
-// 		mathResult = x ** y;
-// 	}
-// 	return mathResult;
+// function doMath(x, znak, y) {
+//    var mathResult;
+//    if (znak === '+') {
+//       mathResult = x + y;
+//    } else if (znak === '-') {
+//       mathResult = x - y;
+//    } else if (znak === '*') {
+//       mathResult = x * y;
+//    } else if (znak === '/') {
+//       mathResult = x / y;
+//    } else if (znak === '%') {
+//       mathResult = x % y;
+//    } else if (znak === '^') {
+//       mathResult = x ** y;
+//    }
+//    return mathResult;
 // }
 
 // немного оптимизировал функцию, убрав лишние if
@@ -102,7 +108,7 @@
 // function filter(input, isEven) {
 // 	var arr = [];
 // 	for (var i = 0; i < input.length; i++) {
-// 		if (isEven(input[i]) === true) {
+// 		if (isEven(input[i])) {
 // 			arr[arr.length] = input[i];
 // 		}
 // 	}
@@ -123,16 +129,18 @@
 // Создать функцию, которая убирает из строки все символы, которые мы передали вторым аргументом.
 // 'func("hello world", ['l', 'd'])' вернет нам "heo wor"
 
-function sumbolDel(text, contArr) {
-	var sumbMass = text.split('');
-	var tempMass = [];
-	for (var i = 0; i < sumbMass.length; i++) {
-		if (contArr.indexOf(sumbMass[i]) === -1) {
-			tempMass.push(sumbMass[i]);
-		}
-	}
-	return tempMass.join('');
-}
+// function sumbolDel(text, contArr) {
+// 	var sumbMass = text.split('');
+// 	var tempMass = [];
+// 	for (var i = 0; i < sumbMass.length; i++) {
+// 		if (contArr.indexOf(sumbMass[i]) === -1) {
+// 			tempMass.push(sumbMass[i]);
+// 		}
+// 	}
+// 	return tempMass.join('');
+// }
 
-var res = sumbolDel('hello world', ['l', 'd',]);
-console.log(res);
+// var res = sumbolDel('hello world', ['l', 'd',]);
+// console.log(res);
+
+
