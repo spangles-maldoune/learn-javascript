@@ -7,36 +7,43 @@
 
 function initSlider(size) {
    var count = 0;
+
+   function valid(val) {
+      return (val > 0 && val <= size);
+   };
+
    return {
       up: function () {
+         var result;
          if (count === size) {
-            count = 0;
-            return count;
+            result = this.reset();
+         } else {
+            result = ++count;
          }
-         ++count;
-         console.log(count);
+         return result;
       },
       down: function () {
+         var result;
          if (count === 0) {
-            count = size;
-            return count;
+            result = this.set(size);
+         } else {
+            result = --count;
          }
-         --count;
-         console.log(count);
+         return result;
       },
       set: function (n) {
-         if (n > 0 && n <= size) {
+         if (valid(n)) {
             count = n;
-            console.log(count);
          } else {
-            console.log('Error!!!')
+            throw new Error('Error!!!');
          }
+         return count;
       },
       reset: function () {
-         console.log(count = 0);
+         return count = 0;
       }
    }
 }
 
 var slider = initSlider(10);
-slider.up();
+console.log(slider.up());
