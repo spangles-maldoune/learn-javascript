@@ -40,3 +40,17 @@ function func(surname, patronymic) {
 }
 
 func.apply(user, pref);
+
+
+
+// Напишите в указанном месте конструкцию с методом bind() так, чтобы this внутри функции func всегда указывал на объект user.
+
+
+// var user = { name: 'Алексей' };
+
+// function func(surname, patronymic) {
+//    alert('привет' + ', ' + this.name + ' ' + patronymic + ' ' + surname);
+// }
+
+// var func = func.bind(user);
+// func('Николаев', 'Иванович');
