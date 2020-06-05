@@ -41,7 +41,10 @@ console.log(output);
 
 function SuperArray(n, m, { min, max }) {
    this.newArray = [];
-   
+   this.positions = {x:0, y:0}
+   this.marker = "&"
+
+
    for (var i = 0; i < n; i++) {
       this.newArray[i] = [];
 
@@ -59,7 +62,7 @@ function SuperArray(n, m, { min, max }) {
             this.newArray[k][i] = 0;
          }
          console.log(this.newArray);
-         
+
       } else if (direction === 'column') {
 
          for (var x = 0; x < this.newArray.length; x++) {
@@ -70,38 +73,32 @@ function SuperArray(n, m, { min, max }) {
 
    }
 
-   this.setMarker = function (x, y) {
-      var _tempMarker;
+   this.setMarker = function (x, y,) {
 
-      if (x >= 0 && y >= 0 && x < this.newArray.length && y < this.newArray[0].length) {
-         _tempMarker = this.newArray[x][y];
-         this.newArray[x][y] = '&';
-         
+      if (validate(x,this.newArray)) {
+         this.positions.x = x;
+      } else if (validate(y,this.newArray[0])) {
+         this.positions.y = y;
       } else {
          throw new SyntaxError('Недопустимый диапазон значений!');
       }
+   }
 
-      this.getMarker = function () {
-         return _tempMarker;
-      }
-      console.log(getMarker(), 'marker');
+   function validate(value, array) {
+     return (value >= 0 && value < array.length)
+   }
 
-      return this.newArray;
-      
+   this.getMarker = function () {
+      return this.marker
    }
 
    this.goTo = function (x, y) {
-      this.newArray[x][y] = '&';
-      return this.newArray;
-      
-      
+      this.setMarker(x,y);
    }
-
-  
-  
 }
 
 var mass = new SuperArray(6, 4, { min: 10, max: 55 });
+mass.
 console.log (mass);
 
 
@@ -120,7 +117,7 @@ SuperArray.prototype.render = function (separator) {
    }
 
    document.write (separator + '<br>');
-   
+
 }
 
 mass.render('--------------');
