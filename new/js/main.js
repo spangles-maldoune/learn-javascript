@@ -121,3 +121,37 @@ SuperArray.prototype.render = function (separator) {
 }
 
 mass.render('--------------');
+
+
+setInterval(function() {
+   var inputs = document.querySelectorAll('.inputValue');
+   var textarea = document.querySelector('.textArea');
+   var tempCont = '';
+   var separator = ', ';
+   var maxSize = inputs.length - 1;
+
+
+   // for (var i = 0; i < inputs.length - 1; i++) {
+   //    if (inputs[i].value !== '' && inputs[i].value) {
+   //       tempCont += inputs[i].value;
+   //    } else {
+   //       tempCont += inputs[i].value + separator;
+   //    }
+   // }
+   
+   // textarea.textContent = tempCont + inputs[maxSize].value;
+   
+
+   for (var i = 0; i < inputs.length; i++) {
+
+      if (inputs[i] !== inputs[maxSize] && inputs[i + 1].value) {
+         tempCont += inputs[i].value + separator;
+      } else {
+         tempCont += inputs[i].value;
+      }
+
+   }
+   
+   textarea.textContent = tempCont;
+   
+}, 3000)
