@@ -138,20 +138,35 @@ setInterval(function() {
    //       tempCont += inputs[i].value + separator;
    //    }
    // }
-   
+
    // textarea.textContent = tempCont + inputs[maxSize].value;
-   
-
+   var tempArray = []
    for (var i = 0; i < inputs.length; i++) {
-
-      if (inputs[i] !== inputs[maxSize] && inputs[i + 1].value) {
-         tempCont += inputs[i].value + separator;
-      } else {
-         tempCont += inputs[i].value;
+      if(inputs[i].value === undefined) {
+          tempArray.push(inputs[i].value)
       }
-
    }
-   
+
+   if(tempArray.length === 0) {
+      return;
+   }
+
+   if (tempArray.length > 1) {
+      for (var i = 0; i < tempArray.length-1; i++) {
+         tempCont += tempArray[i].value + separator;
+      }
+   }
+   tempCont += tempArray[tempArray.length-1];
    textarea.textContent = tempCont;
-   
+
+   // for (var i = 0; i < inputs.length; i++) {
+   //
+   //    if (inputs[i] !== inputs[maxSize] && inputs[i + 1].value) {
+   //       tempCont += inputs[i].value + separator;
+   //    } else {
+   //       tempCont += inputs[i].value;
+   //    }
+   //
+   // }
+
 }, 3000)
