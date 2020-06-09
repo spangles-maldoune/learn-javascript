@@ -4,5 +4,13 @@
 setInterval(function () {
    var inputs = document.querySelectorAll('.inputValue');
    var textarea = document.querySelector('.textArea');
-   textarea.textContent = inputs[0].value + ', ' + inputs[1].value + ', ' + inputs[2].value;
+
+   for (var i = 0; i < inputs.length; i++) {
+      if (inputs[i].value === '') {
+         continue;
+      } else {
+         textarea.textContent += inputs[i].value + ', ';
+      }
+   }
+
 }, 3000)
