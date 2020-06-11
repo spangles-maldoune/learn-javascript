@@ -1,9 +1,11 @@
 //Есть 3 input.Выводить в textarea содержимое всех полей ввода через запятую.Использовать setInterval.
 
 
+
+var inputs = document.querySelectorAll('.inputValue');
+var textarea = document.querySelector('.textArea');
+
 setInterval(function () {
-   var inputs = document.querySelectorAll('.inputValue');
-   var textarea = document.querySelector('.textArea');
    var tempCont = [];
    var separator = ', ';
 
@@ -15,6 +17,6 @@ setInterval(function () {
 
    }
 
-   textarea.textContent = tempCont.join(separator);
+   textarea.value = tempCont.join(separator);
 
 }, 3000)
