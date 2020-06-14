@@ -9,26 +9,34 @@
 // p.check(obj); // --> no p.input() -> 3 prompt -> считает
 
 
+var obj = {
+   x: 12,
+   y: 3,
+   znak: '/'
+};
+
 function SuperMath() {
+   this.obj = {
+      x: 0,
+      y: 0,
+      znak: ''
+   };
+
+   this.valueMass = {
+      '+': function (obj) { return obj.x + obj.y },
+      '-': function (obj) { return obj.x - obj.y },
+      '*': function (obj) { return obj.x * obj.y },
+      '/': function (obj) { return obj.x / obj.y },
+      '%': function (obj) { return obj.x % obj.y },
+   };
 
    this.check = function (obj) {
-
+      this.obj = obj;
       var conf = confirm('Произвести действие ' + obj.x + ' ' + obj.znak + ' ' + obj.y + ' ?');
 
-      var valueMass = {
-         '+': obj.x + obj.y,
-         '-': obj.x - obj.y,
-         '*': obj.x * obj.y,
-         '/': obj.x / obj.y,
-         '%': obj.x % obj.y,
-      };
-
       if (conf === true) {
-         for (var key in valueMass) {
-            if (obj.znak === key) {
-               alert(valueMass[key]);
-            }
-         }
+         var result = this.mathDo(this.valueMass, obj);
+         alert(result);
       } else {
          this.input();
       }
@@ -36,33 +44,19 @@ function SuperMath() {
    }
 
    this.input = function () {
+      this.obj.x = +prompt('Введите новые данные x:', ' ');
+      this.obj.y = +prompt('Введите новые данные y:', ' ');
+      this.obj.znak = prompt('Введите новые данные znak:', ' ');
+      var _stopIfCheck = true;
 
-      var x = +prompt('Введите новые данные x:', ' ');
-      var y = +prompt('Введите новые данные y:', ' ');
-      var znak = prompt('Введите новые данные znak:', ' ');
-      var flag = false;
-      var checkIfStop = true;
+      while (_stopIfCheck) {
 
-      var valueMass = {
-         '+': x + y,
-         '-': x - y,
-         '*': x * y,
-         '/': x / y,
-         '%': x % y,
-      };
-
-      while (checkIfStop) {
-         for (var key in valueMass) {
-            if (key === znak) {
-               flag = true;
-            }
-         }
-
-         if (flag) {
-            alert(valueMass[znak]);
-            checkIfStop = false;
+         if (this.valueMass[this.obj.znak]) {
+            var result = this.mathDo(this.valueMass, obj);
+            alert(result);
+            _stopIfCheck = false;
          } else {
-            znak = prompt('Некорректный ввод математического действия. Введите один из следующих знаков: +, -, /, *, %', ' ');
+            this.obj.znak = prompt('Некорректный ввод математического действия. Введите один из следующих знаков: ' + Object.keys(this.valueMass), ' ');
          }
 
       }
@@ -71,12 +65,11 @@ function SuperMath() {
 
 }
 
+SuperMath.prototype.mathDo = function (valueMass, obj) {
+   var operation = valueMass[obj.znak];
+   return operation(obj);
+}
+
 var p = new SuperMath();
 
-var obj = {
-   x: 12,
-   y: 3,
-   znak: '/'
-};
-
-p.check(obj)
+p.check(obj);
