@@ -16,27 +16,12 @@ var obj = {
 };
 
 function SuperMath() {
-   this.obj = {
-      x: 0,
-      y: 0,
-      znak: ''
-   };
-
-   this.valueMass = {
-      '+': function (obj) { return obj.x + obj.y },
-      '-': function (obj) { return obj.x - obj.y },
-      '*': function (obj) { return obj.x * obj.y },
-      '/': function (obj) { return obj.x / obj.y },
-      '%': function (obj) { return obj.x % obj.y },
-   };
 
    this.check = function (obj) {
-      this.obj = obj;
       var conf = confirm('Произвести действие ' + obj.x + ' ' + obj.znak + ' ' + obj.y + ' ?');
 
       if (conf === true) {
-         var result = this.mathDo(this.valueMass, obj);
-         alert(result);
+         this.mathDo(obj);
       } else {
          this.input();
       }
@@ -44,30 +29,37 @@ function SuperMath() {
    }
 
    this.input = function () {
-      this.obj.x = +prompt('Введите новые данные x:', ' ');
-      this.obj.y = +prompt('Введите новые данные y:', ' ');
-      this.obj.znak = prompt('Введите новые данные znak:', ' ');
-      var _stopIfCheck = true;
-
-      while (_stopIfCheck) {
-
-         if (this.valueMass[this.obj.znak]) {
-            var result = this.mathDo(this.valueMass, obj);
-            alert(result);
-            _stopIfCheck = false;
-         } else {
-            this.obj.znak = prompt('Некорректный ввод математического действия. Введите один из следующих знаков: ' + Object.keys(this.valueMass), ' ');
-         }
-
-      }
-
+      obj.x = +prompt('Введите новые данные x:', ' ');
+      obj.y = +prompt('Введите новые данные y:', ' ');
+      obj.znak = prompt('Введите новые данные znak:', ' ');
+      this.mathDo(obj);
    }
 
 }
 
-SuperMath.prototype.mathDo = function (valueMass, obj) {
-   var operation = valueMass[obj.znak];
-   return operation(obj);
+SuperMath.prototype.mathDo = function (obj) {
+
+   var valueMass = {
+      '+': function (obj) { return obj.x + obj.y },
+      '-': function (obj) { return obj.x - obj.y },
+      '*': function (obj) { return obj.x * obj.y },
+      '/': function (obj) { return obj.x / obj.y },
+      '%': function (obj) { return obj.x % obj.y },
+   };
+   var _stopIfCheck = true;
+
+   while (_stopIfCheck) {
+
+      if (valueMass[obj.znak]) {
+         var operation = valueMass[obj.znak];
+         alert(operation(obj));
+         _stopIfCheck = false;
+      } else {
+         obj.znak = prompt('Некорректный ввод математического действия. Введите один из следующих знаков: ' + Object.keys(valueMass), ' ');
+      }
+
+   }
+
 }
 
 var p = new SuperMath();
