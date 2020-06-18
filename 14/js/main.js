@@ -4,6 +4,7 @@ window.onload = function () {
    var inpNumb = document.querySelector('.inpNumb');
    var blockGreen = document.querySelector('.blockGreen');
    var blockRed = document.querySelector('.blockRed');
+   var mainForm = document.querySelector('.mainForm');
    inpNumb.value = inpRange.value;
 
 
@@ -22,6 +23,10 @@ window.onload = function () {
       }
       return tempComm;
 
+   }
+
+   mainForm.onsubmit = function () {
+      return false;
    }
 
    inpRange.oninput = function () {
