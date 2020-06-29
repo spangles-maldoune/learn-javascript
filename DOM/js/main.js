@@ -41,5 +41,93 @@ inpNumb.oninput = function () {
 
 
 
+window.onload = function () {
+
+   var data = {
+      name: 'contextMenu',
+      items: [
+         {
+            title:'перезагрузить',
+            actionMethod: 'actionReset'
+         },
+         {
+            title: 'получить помощь',
+            actionMethod: 'actionHelp'
+         },
+         {
+            title: 'печать',
+            actionMethod: 'actionPrint'
+         },
+         {
+            title: 'типа инспектор кода',
+            actionMethod: 'actionDevTools'
+         }
+      ]
+   }
+
+   var actions = {
+      actionReset: function () {
+         
+      },
+      actionHelp: function () {
+         
+      },
+      actionPrint: function () {
+
+      },
+      actionDevTools: function () {
+
+      }
+
+   }
+
+   function ContextMenuComponent () {
+      
+   }
+
+   ContextMenuComponent.prototype.makeContextMenu = function () {
+      var ul = document.createElement('ul');
+      ul.classList.add('right-click-menu');
+      for (var i = 0; i < data.items.length; i++) {
+         var li = document.createElement('li');
+         li.innerText = data.items[i].title;
+
+         ul.append(li);
+      }
+      document.body.append(ul);
+   
+   }
+
+   ContextMenuComponent.prototype.rightClickMenu = function () {
+     
+
+   }
+
+   var contextMenu = new ContextMenuComponent();
+   contextMenu.makeContextMenu();
+
+
+   var contextMenu = document.querySelector('.right-click-menu');
+
+   document.addEventListener('contextmenu', function rightClick(event) {
+      event.preventDefault();
+      contextMenu.style.top = event.clientY + 'px';
+      contextMenu.style.left = event.clientX + 'px';
+      contextMenu.classList.add('active');
+   });
+
+   document.addEventListener('click', function click(event) {
+      contextMenu.classList.remove('active');
+      
+   });
+
+   contextMenu.addEventListener('click', function (event) {
+      event.stopPropagation();
+   });
+
+   
+}
+
+
 
 
