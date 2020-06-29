@@ -1,0 +1,28 @@
+.wrapper {
+   margin: 50px 0;
+}
+.mainForm {
+   margin: 0 0 50px 0;
+}
+.inpRange {
+   margin: 0 20px;
+}
+.blockDiag {
+   width: 20px;
+   height: 110px;
+   border: 1px solid black;
+   margin: 0 50px;
+   position: relative;
+}
+.blockGreen {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   background: green;
+}
+.blockRed {
+   position: absolute;
+   width: 100%;
+   background: red;
+   bottom: 0;
+}
