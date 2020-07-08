@@ -31,33 +31,22 @@ app.post('/set-user-info', function (req, res) {
    const parseObjectFromServer = JSON.parse(jsonString);
    tempArray.push(parseObjectFromServer);
 
-   
-
    fs.readFile('./users.json', 'utf8', (err, data) => {
-
       const userDataArray = JSON.parse(data);
       let secretKey = userDataArray
          .map((userData) => userData.secretKey)
          .find((secretKey) => secretKey === parseObjectFromServer.secretKey);
 
-      
-
-      
+      fs.writeFile('./users.json', JSON.stringify(tempArray), err => {
+         if (err) {
+            console.log('Error writing file', err)
+         } else {
+            console.log('Successfully wrote file')
+         }
+      });
 
       sendResult(secretKey, res)
    });
-   
-   fs.writeFile('./users.json', JSON.stringify(tempArray), err => {
-      if (err) {
-         console.log('Error writing file', err)
-      } else {
-         console.log('Successfully wrote file')
-      }
-   });
-   
-
-
-   res.send(tempArray);
 })
 
 
@@ -81,9 +70,9 @@ let sendResult = (secretKey, response) => {
 //    tempArray.push(parseObjectFromServer);
 
 
-//    let userStringData = fs.readFileSync('./users.json', 'utf8'); 
+//    let userStringData = fs.readFileSync('./users.json', 'utf8');
 //    const userDataArray = JSON.parse(userStringData);
-   
+
 //    let secretKey = userDataArray
 //       .map((userData) => userData.secretKey)
 //       .find((secretKey) => secretKey === parseObjectFromServer.secretKey);
@@ -95,7 +84,7 @@ let sendResult = (secretKey, response) => {
 //    } else {
 //       res.status(200).send('Ok');
 //    }
-      
+
 
 //    res.send(tempArray);
 // })
