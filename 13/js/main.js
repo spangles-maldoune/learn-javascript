@@ -99,27 +99,31 @@ app.listen(port, function () {
 // });
 let tempArray = [];
 
+
 app.post('/set-user-info', function (req, res) {
    const jsonString = JSON.stringify(req.body);
    const parseObjectFromServer = JSON.parse(jsonString);
    tempArray.push(parseObjectFromServer);
 
+   let parseData =
+   fs.readFile('./users.json', 'utf8', (data) => {
+      const userDataArray = JSON.parse(data);
+      let secretKey = userDataArray
+          .map((userData) => userData.secretKey)
+          .find((secretKey) => secretKey === parseObjectFromServer.secretKey);
 
-   let userStringData = fs.readFileSync('./users.json', 'utf8'); 
-   const userDataArray = JSON.parse(userStringData);
-   
-   let secretKey = userDataArray
-   .map((userData) => userData.secretKey)
-   .find((secretKey) => secretKey === parseObjectFromServer.secretKey);
+      fs.writeFileSync('./users.json', JSON.stringify(tempArray));
+      sendResult(secretKey, res)
+   });
 
-   fs.writeFileSync('./users.json', JSON.stringify(tempArray));
-
-   if (secretKey) {
-      res.status(301).send('Пользватель уже существует');
-   } else {
-      res.status(200).send('Ok');
-   }
-      
-
-   res.send(tempArray);
 })
+
+
+let sendResult = (secretKey, response) => {
+   if (secretKey) {
+      response.status(301).send('Пользватель уже существует');
+   } else {
+      response.status(200).send('Ok');
+   }
+}
+
