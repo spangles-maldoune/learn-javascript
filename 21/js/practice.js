@@ -15,8 +15,7 @@ window.onload = function () {
       },
          () => {
             console.log(2);
-            const flag = true;
-            return flag;
+            return true;
          })
 
       .then((flag) => {
@@ -31,10 +30,8 @@ window.onload = function () {
          console.log(5);
       },
          (flag) => {
-            if (flag) {
-               console.log(6);
-            } else {
-               console.log(6);
+            console.log(6);
+            if (!flag) {
                return Promise.reject();
             }
          })
@@ -59,6 +56,6 @@ window.onload = function () {
       },
          () => {
             console.log(12);
-         });
+         })
 
 }
