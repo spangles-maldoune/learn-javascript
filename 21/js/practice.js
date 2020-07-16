@@ -6,56 +6,56 @@
 window.onload = function () {
    const isNumChainingOut = new Promise((resolve, reject) => {
       console.log(0);
-      reject();
+      resolve();
    });
 
    isNumChainingOut
       .then(() => {
          console.log(1);
       },
-         () => {
-            console.log(2);
-            return true;
-         })
+      () => {
+         console.log(2);
+         return true;
+      })
 
       .then((flag) => {
          console.log(3);
          return Promise.reject(flag);
       },
-         () => {
-            console.log(4);
-         })
+      () => {
+         console.log(4);
+      })
 
       .then(() => {
          console.log(5);
       },
-         (flag) => {
-            console.log(6);
-            if (!flag) {
-               return Promise.reject();
-            }
-         })
+      (flag) => {
+         console.log(6);
+         if (!flag) {
+            return Promise.reject();
+         }
+      })
 
       .then(() => {
          console.log(7);
       },
-         () => {
-            console.log(8);
-         })
+      () => {
+         console.log(8);
+      })
 
       .then(() => {
          console.log(9);
          return Promise.reject();
       },
-         () => {
-            console.log(10);
-         })
+      () => {
+         console.log(10);
+      })
 
       .then(() => {
          console.log(11);
       },
-         () => {
-            console.log(12);
-         })
+      () => {
+         console.log(12);
+      })
 
 }
