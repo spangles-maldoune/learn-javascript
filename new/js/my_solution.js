@@ -2,23 +2,43 @@ Vue.component('task-manager', {
    data() {
       //модель для представления компонента
       return {
-         cssClassList: ['navigation', 'header-navigation'],
-         taskItems: ['Task item 1', 'Task item 2', 'Task item 3', 'Task item 4']
+         cssClassList: ['main-header-list'],
+         taskArr: ['Task item one', 'Task item two', 'Task item three', 'Task item four']
       }
    },
    methods: {
       //разделение состояния компонента от его поведения
-      sendTask() {
-         console.log('sendTask')
+      onSendTransfer() {
+         console.log(this.taskArr);
+      }
+
+   },
+   //уникальный шаблон для визуализации компонента, использующий модель и поведение объекта
+   template: `
+      <div :class="cssClassList">
+         <ol-list :taskItems="taskArr"></ol-list>
+         <send-button @send="onSendTransfer"></send-button>
+
+         <ol-list :taskItems="taskArr"></ol-list>
+         <send-button @send="onSendTransfer"></send-button>
+      </div>
+   `
+});
+
+Vue.component('ol-list', {
+   props: ['taskItems'],
+   data() {
+      return {
+         
       }
    },
-   //уникальный шаблон для визуализации компонента, использующий модель  поведение объекта
+   methods: {
+
+   },
    template: `
-      <ol :class="cssClassList">
+      <ol class="header-list">
          <task-list-item :taskText="item" v-for="item in taskItems"></task-list-item>
-         
       </ol>
-      <send-button @hello="sendTask"></send-button>
    `
 });
 
@@ -35,7 +55,7 @@ Vue.component('task-list-item', {
    template: `
       <li class="task-item">{{taskText}}</li>
    `
-})
+});
 
 Vue.component('send-button', {
    data() {
@@ -45,13 +65,13 @@ Vue.component('send-button', {
    },
    methods: {
       onClick(event) {
-         this.$emit('hello');
+         this.$emit('send');
       }
    },
    template: `
       <button @click="onClick" class="send-btn">{{buttonName}}</button>
    `
-})
+});
 
 
 const vue = new Vue({
