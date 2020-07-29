@@ -1,80 +1,140 @@
-Vue.component('task-manager', {
+Vue.component('diagrams', {
    data() {
-      //модель для представления компонента
       return {
-         cssClassList: ['main-header-list'],
-         taskArr: ['Task item one', 'Task item two', 'Task item three', 'Task item four']
+         diagItemObj: [
+            {
+               name: 'diagramRed',
+               color: 'red',
+               heightValue: 100
+            },
+            {
+               name: 'diagramGreen',
+               color: 'green',
+               heightValue: 125
+            },
+            {
+               name: 'diagramYellow',
+               color: 'yellow',
+               heightValue: 200
+            },
+            {
+               name: 'diagramPink',
+               color: 'pink',
+               heightValue: 100
+            },
+            {
+               name: 'diagramOrange',
+               color: 'orange',
+               heightValue: 200
+            },
+            {
+               name: 'diagramBlue',
+               color: 'blue',
+               heightValue: 200
+            },
+            {
+               name: 'diagramBlack',
+               color: 'black',
+               heightValue: 200
+            }
+         ]
       }
    },
    methods: {
-      //разделение состояния компонента от его поведения
-      onSendTransfer() {
-         console.log(this.taskArr);
+      getHeightValue(heightValue, name) {
+         const itemsObj = this.diagItemObj;
+         const item = itemsObj.find(item => item.name === name);
+         item.value = heightValue;
+         console.log(item.name, 'heightValue');
       }
-
    },
-   //уникальный шаблон для визуализации компонента, использующий модель и поведение объекта
-   template: `
-      <div :class="cssClassList">
-         <ol-list :taskItems="taskArr"></ol-list>
-         <send-button @send="onSendTransfer"></send-button>
-
-         <ol-list :taskItems="taskArr"></ol-list>
-         <send-button @send="onSendTransfer"></send-button>
-      </div>
+   template:`
+   <div class="global-style">
+      <block-range
+         :itemObject="item" 
+         v-for="item in diagItemObj"
+         @sendHeightValue="getHeightValue">
+   
+      </block-range>
+   </div>
    `
 });
 
-Vue.component('ol-list', {
-   props: ['taskItems'],
+
+Vue.component('block-range', {
+   props:['itemObject'],
    data() {
       return {
          
       }
+
    },
    methods: {
+      getHeightValue(heightValue, name) {
+         this.$emit('sendHeightValue', heightValue, name);
+      }
 
    },
    template: `
-      <ol class="header-list">
-         <task-list-item :taskText="item" v-for="item in taskItems"></task-list-item>
-      </ol>
-   `
-});
-
-Vue.component('task-list-item', {
-   props:['taskText'],
-   data() {
-      return {
-         
-      }
-   },
-   methods: {
+   <div>
+      <diagram-item :objData="itemObject"></diagram-item>
+      <input-item :objData="itemObject" @sendHeightValue="getHeightValue"></input-item>
+   </div>
      
-   },
-   template: `
-      <li class="task-item">{{taskText}}</li>
    `
-});
+})
 
-Vue.component('send-button', {
+
+Vue.component('diagram-item', {
+   props: ['objData'],
    data() {
       return {
-         buttonName: 'transfer'
+         customStyle: {
+            'background-color': this.objData.color,
+            'height': this.objData.heightValue + 'px',
+         }
+
       }
    },
    methods: {
-      onClick(event) {
-         this.$emit('send');
+
+   },
+   template: `
+   <div class="item-style" :style="customStyle"></div>
+   
+   `
+})
+
+
+Vue.component('input-item', {
+   props: ['objData'],
+   data() {
+      return {
+         name: this.objData.name,
+         type: 'range',
+         value: {
+            'min': 100,
+            'max': 300
+         },
+      }
+   },
+   methods: {
+      changeValue(event) {
+         const input = event.target;
+         const name = this.name;
+         const presentHeightValue = this.objData.heightValue;
+         this.objData.heightValue = input.value;
+         // console.log(presentHeightValue, 'presentHeightValue');
+         // console.log(this.objData.heightValue, 'this.objData.heightValue');
+         this.$emit('sendHeightValue', presentHeightValue, name);
       }
    },
    template: `
-      <button @click="onClick" class="send-btn">{{buttonName}}</button>
+   <input :type="type" :name="name" :min="value.min" :max="value.max" @change="changeValue">
    `
-});
+})
 
 
 const vue = new Vue({
    el: '#app'
 });
-
