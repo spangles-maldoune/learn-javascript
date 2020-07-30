@@ -5,47 +5,49 @@ Vue.component('diagrams', {
             {
                name: 'diagramRed',
                color: 'red',
-               heightValue: 100
+               heightValue: '200'
             },
             {
                name: 'diagramGreen',
                color: 'green',
-               heightValue: 125
+               heightValue: '125'
             },
             {
                name: 'diagramYellow',
                color: 'yellow',
-               heightValue: 200
+               heightValue: '200'
             },
             {
                name: 'diagramPink',
                color: 'pink',
-               heightValue: 100
+               heightValue: '100'
             },
             {
                name: 'diagramOrange',
                color: 'orange',
-               heightValue: 200
+               heightValue: '200'
             },
             {
                name: 'diagramBlue',
                color: 'blue',
-               heightValue: 200
+               heightValue: '200'
             },
             {
                name: 'diagramBlack',
                color: 'black',
-               heightValue: 200
+               heightValue: '200'
             }
-         ]
+         ],
+         
       }
    },
    methods: {
       getHeightValue(heightValue, name) {
          const itemsObj = this.diagItemObj;
+         console.log(heightValue)
          const item = itemsObj.find(item => item.name === name);
-         item.value = heightValue;
-         console.log(item.name, 'heightValue');
+         item.heightValue = heightValue;
+         console.log(itemsObj);
       }
    },
    template:`
@@ -62,7 +64,7 @@ Vue.component('diagrams', {
 
 
 Vue.component('block-range', {
-   props:['itemObject'],
+   props: ['itemObject'],
    data() {
       return {
          
@@ -97,6 +99,7 @@ Vue.component('diagram-item', {
       }
    },
    methods: {
+      
 
    },
    template: `
@@ -122,10 +125,9 @@ Vue.component('input-item', {
       changeValue(event) {
          const input = event.target;
          const name = this.name;
-         const presentHeightValue = this.objData.heightValue;
-         this.objData.heightValue = input.value;
-         // console.log(presentHeightValue, 'presentHeightValue');
-         // console.log(this.objData.heightValue, 'this.objData.heightValue');
+         const presentHeightValue = input.value;
+         console.log(presentHeightValue, 'presentHeightValue');
+      
          this.$emit('sendHeightValue', presentHeightValue, name);
       }
    },
