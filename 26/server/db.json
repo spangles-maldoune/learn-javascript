@@ -1,0 +1,84 @@
+{
+   "products": [
+      {
+         "image": "1.jpeg",
+         "name": "Apple iPhone Xs 64GB Gold",
+         "price": "22900",
+         "id": "p1",
+         "available": true,
+         "topSale": true,
+         "discount": {"status": true, "value": "-22%"},
+         "description": "Экран (5.8\", OLED (Super Retina HD), 2436x1125)/ Apple A12 Bionic/ основная камера: двойная 12 Мп, фронтальная камера: 7 Мп/ RAM 4 ГБ/ 64 ГБ встроенной памяти/ 3G/ LTE/ GPS/ Nano-SIM/ iOS 12"
+      },
+      {
+         "image": "2.jpg",
+         "name": "Asus X509MA-EJ160 Peacock Blue",
+         "price": "15100",
+         "id": "p2",
+         "available": true,
+         "topSale": false,
+         "discount": {"status": true, "value": "-20%"},
+         "description": "Экран 15.6\" (1920x1080) Full HD, матовый / Intel Pentium Silver N5000 (1.1 - 2.7 ГГц) / RAM 8 ГБ / SSD 256 ГБ / Intel UHD Graphics 605 / без ОД / Wi-Fi / Bluetooth / веб-камера / без ОС / 1.8 кг / синий"
+      },
+      {
+         "image": "3.jpg",
+         "name": "Бензопила Stihl MS 260",
+         "price": "7500",
+         "id": "p3",
+         "available": true,
+         "topSale": true,
+         "discount": {"status": false, "value": "-10%"},
+         "description": "Особенности Автоматическая смазка цепи Блокировка кнопки включения Тормоз цепи Длина шины, мм 400 Скорость вращения цепи, м/сек 7.0"
+      },
+      {
+         "image": "4.jpg",
+         "name": "Велосипед Ardis Santana 24\" 15\" 2019",
+         "price": "9800",
+         "id": "p4",
+         "available": true,
+         "topSale": false,
+         "discount": {"status": false, "value": "-25%"},
+         "description": "Класс Городской Размер рамы 15\" Количество скоростей 18 Тип Хардтейл"
+      },
+      {
+         "image": "5.jpg",
+         "name": "Топор, Miol 1 кг",
+         "price": "450",
+         "id": "p5",
+         "available": true,
+         "topSale": false,
+         "discount": {"status": false, "value": "-15%"},
+         "description": "Длина: 37 см"
+      },
+      {
+         "image": "6.jpg",
+         "name": "Рюкзак Nike Nk Utility Speed Черный",
+         "price": "1250",
+         "id": "p6",
+         "available": true,
+         "topSale": false,
+         "discount": {"status": false, "value": "-50%"},
+         "description": "На сегодняшний день Nike – это одна из лидирующих компаний мира по производству спортивной обмундировки. Nike - это история не только о спорте, а об индивидуальном стиле тех, кто выбирает этот бренд."
+      },
+      {
+         "image": "7.jpg",
+         "name": "Картофель 'Огонек'",
+         "price": "15",
+         "id": "p7",
+         "available": true,
+         "topSale": true,
+         "discount": {"status": true, "value": "-15%"},
+         "description": "Сорт столового назначения, высокоурожаен. Клубни крупные, округло-овальные, белые, со слегка углубленными глазками."
+      },
+      {
+         "image": "8.jpg",
+         "name": "Паяльник электрический YATO 30 Вт",
+         "price": "380",
+         "id": "p8",
+         "available": true,
+         "topSale": false,
+         "discount": {"status": false, "value": "-33%"},
+         "description": "Прочность, идеальное качество изготовления, отличные материалы, сталь, высококачественные технические характеристики продуктов YATO, которые предлагают три направления: служба, строительные и садовые."
+      }
+   ]
+}
